@@ -24,28 +24,143 @@
 
 
         <div class="container">
-            <div class="header">
-                <h3 class="text-muted">Molecular Dynamics Project.</h3>
+            <div class="row col-lg-12">
+                <h5 class="text-muted">PY4109 - Computational Physics</h5>
+                <h6 class="text-muted">Eoin Murray - 110367833</h6>
+                <h6 class="text-muted"><a href="https://github.com/eoinmurray/molec/tree/master">Code on Github.</a></h6>
+            </div>
+            <div class="row col-lg-10 col-lg-offset-1">
+
+
+            <div class="row col-lg-8 col-lg-offset-2 text-center">
+                <hr>
+                <h4 class="text-center">Title</h4>
+                <p class="text-center"><em>Analysis of the dynamics of a noble gas cluster.</em></p>
             </div>
 
-            <div class="row marketing">
-                <div class="col-lg-12">
-                    <h4 class="text-center">Title</h4>
-                    <p class="text-center">Monte carlo simulation of an annealed fcc cluster.</p>
-                    <h4 class="text-center">Abstract</h4>
-                    <div class="lg-col-12">
-                    We have performed simulated annealing of an arbitrary fcc atomic clusters with a monte-carlo molecular-dynamics approach. The atoms are confined by the Leonard-Jones potential and are annealed integrating the equations of motion. The heat capacity of the system is investigated by adding incremental energy to the system and allowing the atoms to gain a brownian velocity. Further systematics of the vibrational spectrum are investigated.
-                    </div>
-                    <h4 class="text-center">Introduction</h4>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
 
-                    <h4 class="text-center">Methods</h4>
 
-                    <h4 class="text-center">Results</h4>
+                We have performed simulated annealing of a noble gas fcc atomic cluster with a monte-carlo molecular-dynamics approach. The atoms are confined by the Leonard-Jones potential and are annealed by adding energy and integrating the equations of motion. The heat capacity of the system is investigated by adding incremental energy to the system and allowing the atoms to gain a brownian velocity. Further systematics of the vibrational spectrum are investigated.
 
-                    <h4 class="text-center">Conclusion</h4>
-
+                <hr>
                 </div>
             </div>
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <br/>
+                <br/>
+                <br/>
+                <h4 class="text-center">Introduction</h4>
+                <p>
+                There are two main families of MD methods, which can be distinguished according to the model (and the resulting mathematical formalism) chosen to represent a physical system. In the ‘classical’ mechanics approach to MD simulations molecules are treated as classical objects, resembling very much the ‘ball and stick’ model. Atoms correspond to soft balls and elastic sticks correspond to bonds. The laws of classical mechanics define the dynamics of the system. The ‘quantum’ or ‘first-principles’ MD simulations, which started in the 1980s with the seminal work of Car and Parinello, take explicitly into account the quantum nature of the chemical bond. The electron density function for the valence electrons that determine bonding in the system is computed using quantum equations, whereas the dynamics of ions (nuclei with their inner electrons) is followed classically.
+                Quantum MD simulations represent an important improvement over the classical approach and they are used in providing information on a number of biological
+            problems. However, they require more computational resources. At present only the classical MD is practical for simulations of biomolecular systems comprising many thousands of atoms over time scales of nanoseconds. In the remainder of this article the classical MD will simply be referred to as MD.
+                </p>
+            </div>
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <br/>
+                <br/>
+                <br/>
+
+                <h4 class="text-center">Results</h4>
+                <h5 class="text-center">Molecular annealing</h5>
+                <p>
+                    To investigate the annealing of the cluster the total energy of the cluster was plotted against time.
+                    To simulate the natural movement of the atoms in the Lennard-Jones potential the equations of motion were numerically
+                    integrated with the total energy of the system being recorded at each time step. The total energy is the sum of the internal potential
+                    energy, the external potential energy and the kintetic energy for all particles. Energy versus time is plotted in Fig 1 for various damping parameters gamma. This total energy was investigate in clusters with 3, 4 and 5 shells. The equations of
+                    motion were given a damping factor to force the particles to lose energy and let the settle into equilibrium positions.
+                </p>
+                <br/>
+            </div>
+
+            <img class="img-rounded" src="/images/energyvtime.png">
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <br/>
+                <p class="text-center"><em>
+                Fig 1. Total energy vs time for 3, 4 and 5 atom shell clusters vs
+                various oscillator decay parameters.
+                </em></p>
+                <br/>
+                <p>
+                    The time step dx was 0.004. The units of this time are arbitrary. Clearly the total energy in all cases is negative as the atoms are bound.
+                     It is not expected that the atomic distances should change very much from the fcc case, and this clear from Fig 2, where the distance of
+                     each atom from the central atom is plotted.
+                </p>
+                <br/>
+            </div>
+
+            <img class="img-rounded" src="/images/distance.png">
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <br/>
+                <p class="text-center"><em>
+                Fig 2. Distance of each atom from the central atom, first for the fcc lattice created algorithmically and secondly plotted after the
+                system is integrated, with damping, for a time period to allow it to settle.
+                </em></p>
+                <br/>
+                <p>
+
+                </p>
+            </div>
+
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <h5 class="text-center">Heat capacity</h5>
+                <p>In this section we examine the results of adding energy to the system. Energy was added to the system up to E = 3, in steps of 0.01.</p>
+                <br/>
+            </div>
+
+            <img class="img-rounded" src="/images/cluster.png">
+
+            <div class="row col-lg-6 col-lg-offset-3">
+            <br/>
+                <p class="text-center"><em>
+                Fig 2. Position of each atom in the cluster for a 5-shell cluster. First after annealling and before any energy was added, then after energy of 3 (a.u.) was added and finally after allowing the system to cool down.
+                </em></p>
+                <br/>
+            </div>
+
+            <img class="img-rounded" src="/images/heatcap.png">
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <h5 class="text-center">Vibrational spectrum</h5>
+
+            </div>
+
+            <img class="img-rounded" src="/images/correlation.png">
+
+            <div class="row col-lg-6 col-lg-offset-3">
+            </div>
+
+            <img class="img-rounded" src="/images/spectrum.png">
+
+            <div class="row col-lg-6 col-lg-offset-3">
+            </div>
+
+
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <h4 class="text-center">Conclusion</h4>
+            </div>
+
+            <div class="row col-lg-6 col-lg-offset-3">
+                <h4 class="text-center">Methods</h4>
+                <h5 class="text-center">Algorithm</h5>
+                <h6 class="text-center">Molecular annealing</h6>
+                <h6 class="text-center">Heat capacity</h6>
+                <h6 class="text-center">Vibrational spectrum</h6>
+                <h5 class="text-center">Implementation</h5>
+
+            </div>
+            </div>
+
+
+        </div>
 
             <div class="footer">
                 <p>Do you even laser?</p>
@@ -75,18 +190,6 @@
         <!-- endbuild -->
 
         <!-- build:js scripts/plugins.js -->
-        <script src="bower_components/sass-bootstrap/js/affix.js"></script>
-        <script src="bower_components/sass-bootstrap/js/alert.js"></script>
-        <script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
-        <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
-        <script src="bower_components/sass-bootstrap/js/modal.js"></script>
-        <script src="bower_components/sass-bootstrap/js/transition.js"></script>
-        <script src="bower_components/sass-bootstrap/js/button.js"></script>
-        <script src="bower_components/sass-bootstrap/js/popover.js"></script>
-        <script src="bower_components/sass-bootstrap/js/carousel.js"></script>
-        <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
-        <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
-        <script src="bower_components/sass-bootstrap/js/tab.js"></script>
         <!-- endbuild -->
 </body>
 </html>
