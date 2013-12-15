@@ -396,7 +396,7 @@
 
                     <h5 class="text-center" id="algorithms">Algorithms</h5>
 
-                    <h6 class="text-center"><em>Molecular annealing</em></h6>
+                    <h5 class=""><em>Molecular annealing</em></h5>
                     <p>
                        The atoms were placed on a fragment of an fcc lattice such that the nearest neighbour distance is
                         $$r_{nn} = (2\alpha/\beta)^{1/6},$$
@@ -449,7 +449,7 @@ while(t lt tmax){
 
                     </p>
 
-                    <h6 class="text-center"><em>Heat capacity</em></h6>
+                    <h5 class=""><em>Heat capacity</em></h5>
 
                         To calculate the heat capacity of the system energy increments were added to the cluster. The system was integrated as above for a period after adding energy.
 
@@ -481,27 +481,65 @@ The kinetic energy of a single atoms was calculated by summing the squares of th
 
                     </p>
 
-                    <h6 class="text-center"><em>Vibrational spectrum</em></h6>
+                    <h5 class=""><em>Vibrational spectrum</em></h5>
                     <p>
+                        The velocity autocorrelation function was calculated as follows. The pseudocode here is simplified to only one dimension.
 
+                        Since the autocorrelation is the relationship between the velocities at time $t$ and time $t + \tau$. We first need to fill the initial velocities.
+<code><pre>
+#C_v holds the autocorrelation values
+#vxold holds the velocities at each time itau
+for(itau=maxtau-1; itau >= 0; itau--){
+
+  integrate_system()
+
+  C_v[itau] =  0.0;
+  for(i=0; i lt N; i++){
+    vxold[i][itau] = vx[i];
+  }
+}
+</pre></code>
+
+We then proceed to calculate the velocities at increased times. We shift the old times forward and set the VAF to $C_v(t) = v(t + \tau)v(t).$
+
+<code><pre>
+for(iav=0; iav lt MaxTime ; iav++){
+  integrate_system()
+
+  for(itau=maxtau-1; itau>0 ; itau--){
+    for(i=0; i lt N; i++){
+      vxold[i][itau] = vxold[i][itau-1] # shift old velocities
+      C_v[itau] +=   vx[i]*vxold[i][itau] # accumulate average
+    }
+  }
+
+  for(i=0; i lt N; i++){
+    C_v[0] +=   vx[i]*vxold[i][itau]
+    vxold[i][0] = vx[i];
+  }
+}
+</pre></code>
                     </p>
+
+                    The $C_v$ array is then normalised. Before its Fourier transform is taken it is inserted into an array $A$, where every second value in $A$ is then riffled with the value 0. This is beause the provided Fourier transform program will work on the real and imaginary parts of an input. In this case however we are only concered with the real values.
+
+                    The provided Fast Fourier transform library is then used to take the fft of the VAF. This fft is then squared and the intensity vs frequency is then plotted.
 
 
                     <h5 class="text-center" id="implementation">Implementation</h5>
+                    <p>The implementation of the code for the report was done in the C programming languate with provided C and fortran libraries.
 
-                    <h6 class="text-center"><em>Molecular annealing</em></h6>
+                    The libraries used were: </p>
+
+                    <ul>
+                    <li><em>fcc_posn.c</em> - Places the atoms on the cubic cluster.</li>
+                    <li><em>forces.c</em>  - Calculates the forces acting on the N atoms in the cluster.</li>
+                    <li><em>int_dyn.c</em> - integrates the equations of motion.</li>
+                    <li><em>randveladd.c</em> - Adds random velocities to each particle such that the total energy of the cluster raises by dE.</li>
+                    <li><em>int_dyn.c</em> - integrates the equations of motion.</li>
+                    </ul>
                     <p>
-
-                    </p>
-
-                    <h6 class="text-center"><em>Heat capacity</em></h6>
-                    <p>
-
-                    </p>
-
-                    <h6 class="text-center"><em>Vibrational spectrum</em></h6>
-                    <p>
-
+                    The codes were compiled using <em>gcc</em> and <em>gfortran</em> on a Debian Linux 32 bit system.
                     </p>
 
                 </div>
