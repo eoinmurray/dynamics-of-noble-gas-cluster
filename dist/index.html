@@ -10,12 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
+        <link rel="stylesheet" href="styles/9a774be5.main.css"/>
+        <script src="scripts/vendor/d7100892.modernizr.js"></script>
         <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
@@ -28,8 +24,7 @@
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
-<script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
     </head>
     <body>
@@ -59,8 +54,8 @@
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
-                    <br/>
+                    <br>
+                    <br>
                     <h4 class="text-center">Table of contents.</h4>
 
                     <ul class="col-lg-6 col-lg-offset-4">
@@ -68,22 +63,22 @@
                         <li><a href="#results">Results</a>
                         <ul>
                             <li><a href="#molecular-annealing">Molecular annealing</a>
-                            <li><a href="#heat-capacity">Heat capacity</a>
-                            <li><a href="#vibrational-spectrum">Vibrational spectrum</a>
-                        </ul>
+                            </li><li><a href="#heat-capacity">Heat capacity</a>
+                            </li><li><a href="#vibrational-spectrum">Vibrational spectrum</a>
+                        </li></ul>
                         </li>
                        <li><a href="#methods">Methods</a>
                         <ul>
                             <li><a href="#algorithms">Algorithms</a>
-                            <li><a href="#implementation">Implementation</a>
-                        </ul>
-                        <li><a href="#conclusion">Conclusion</a></li>
+                            </li><li><a href="#implementation">Implementation</a>
+                        </li></ul>
+                        </li><li><a href="#conclusion">Conclusion</a></li>
                     </ul>
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
-                    <br/>
+                    <br>
+                    <br>
                     <h4 class="text-center" id="introduction">Introduction</h4>
                     <p>
                         Molecular dynamics is a computational technique that investigates the behaviour of atoms
@@ -104,12 +99,12 @@
 
                 <img class="img-rounded" src="images/lattice.gif">
                 <div class="row col-lg-6 col-lg-offset-3">
-                <br/>
+                <br>
                     <p class="text-center"><em>
                     Fig 1. Atomic structure of (a) a primitive cude, (b) body centred cube and (c) face centred cubic.
                     </em></p>
 
-                    <br/>
+                    <br>
 
                     <p>
                     The atoms in the cluster were confined by the Lennard-Jones (LJ) potential.
@@ -123,11 +118,11 @@
                 <img class="img-rounded" src="images/ljpot.svg">
                 </div>
                 <div class="row col-lg-6 col-lg-offset-3">
-                <br/>
+                <br>
                     <p class="text-center"><em>
                     Fig 2. Plot of the Lennard-Jones potential.
                     </em></p>
-                    <br/>
+                    <br>
                     <p>
                     The LJ is a simple model of the interation between a pair of neutral atoms.
                     The $r^{-12}$ term described the Pauli repulsion at short range due to the  overlapping electron orbitals. The $r^{-6}$ is the attractive term that incorporates the effects of the Van der Waals interatomic forces at longer ranges.
@@ -154,8 +149,8 @@
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
-                    <br/>
+                    <br>
+                    <br>
                     <h4 class="text-center" id="results">Results</h4>
                     <h5 class="text-center" id="molecular-annealing">Molecular annealing</h5>
                     <p>
@@ -168,37 +163,37 @@
                         motion were given a damping factor to force the particles to lose energy and let the settle into equilibrium positions.
                     </p>
 
-                    <br/>
+                    <br>
                 </div>
 
                 <img class="img-rounded" src="images/energyvtime.png">
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
+                    <br>
                     <p class="text-center"><em>
                     Fig 3. Total energy vs time for 3, 4 and 5 atom shell clusters vs
                     various oscillator decay parameters.
                     </em></p>
-                    <br/>
+                    <br>
                     <p>
                         The time step dx was 0.004. The units of this time are arbitrary. Clearly the total energy in all cases is negative as the atoms are bound.
                          It is not expected that the atomic distances should change very much from the fcc case, and this clear from Fig 4, where the distance of
                          each atom from the central atom is plotted.
                     </p>
-                    <br/>
+                    <br>
                 </div>
 
-                <br/>
-                <br/>
+                <br>
+                <br>
                 <img class="img-rounded" src="images/distance.png">
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
+                    <br>
                     <p class="text-center"><em>
                     Fig 4. Distance of each atom from the central atom, first for the fcc lattice created algorithmically and secondly plotted after the
                     system is integrated, with damping, for a time period to allow it to settle.
                     </em></p>
-                    <br/>
+                    <br>
                     <p>
                         In Fig 5. the increase in binding energy after annealing is plotted for different numbers of atoms in the system.
                         The increase in binding energy is a direct linear function of the number atoms in the cluster.
@@ -213,7 +208,7 @@
 
                     <table class="table table-bordered">
                         <tr><strong>Table 1.</strong></tr>
-                        <tr><td><strong># shells</strong><td><strong># atoms</strong></td><td><strong>Binding energy</stron></td></tr>
+                        <tr><td><strong># shells</strong></td><td><strong># atoms</strong></td><td><strong>Binding energy</strong></td></tr>
 
                         <tr><td>3</td><td>43</td><td>0.506</td></tr>
                         <tr><td>4</td><td>55</td><td>0.724</td></tr>
@@ -223,11 +218,11 @@
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
+                    <br>
                     <p class="text-center"><em>
                     Fig 5. Increase in binding energy after annealing versus total number of atoms in the cluster.
                     </em></p>
-                    <br/>
+                    <br>
                 </div>
 
 
@@ -246,17 +241,17 @@
                     heating. In this case the atoms did settle back into their initial equilibrium positions, this was a limiting factor of the limited computational power
                     used in this project.
                     </p>
-                    <br/>
+                    <br>
                 </div>
 
                 <img class="img-rounded" src="images/cluster.png">
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                <br/>
+                <br>
                     <p class="text-center"><em>
                     Fig 6. Position of each atom in the cluster for a 5-shell cluster. First after annealling and before any energy was added, then after energy of 3 (a.u.) was added and finally after allowing the system to cool down.
                     </em></p>
-                    <br/>
+                    <br>
 
                     <p>
                         The energies at the various states are stated in Table 2. In each case the energy after heating and then cooling is very similar to the initial energy before cooling.
@@ -273,12 +268,12 @@
                     <img src="images/heatcap.png" class="">
                     </div>
                     <div class="col-lg-offset-1 col-lg-4">
-                    <br/>
+                    <br>
                     <table class="table table-bordered">
                         <tr><strong>Table 2.</strong></tr>
-                        <tr><td><strong># shells</strong><td><strong>$C_{low}$</strong></td><td><strong>$C_{high}$</stron></td><td><strong>Ratio</stron>
-                        <td><strong>Initial energy</strong></td><td><strong>Final energy</stron></td><td><strong>Cooled energy</stron></td>
-                        </td></tr>
+                        <tr><td><strong># shells</strong></td><td><strong>$C_{low}$</strong></td><td><strong>$C_{high}$</strong></td><td><strong>Ratio
+                        <td><strong>Initial energy</strong></td><td><strong>Final energy</strong></td><td><strong>Cooled energy</strong></td>
+                        </strong></td></tr>
                         <tr><td>3</td><td>1.09</td><td>1.67</td><td>1.53</td><td>-47.62437</td><td>21.3897</td><td>-48.936</td></tr>
                         <tr><td>4</td><td>1.2</td><td>2.49</td><td>2.06</td><td>-67.708937</td><td>19.306</td><td>-62.8944</td></tr>
                         <tr><td>5</td><td>0.988</td><td>1.87</td><td>1.89</td><td>-103.82</td><td>30.383</td><td>-100.78</td></tr>
@@ -288,11 +283,11 @@
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
+                    <br>
                     <p class="text-center"><em>
                     Fig 7. Average kinetic energy per particle versus energy applied to the cluster. Table 2. Heat capacity in the harmonic, and gas regime.
                     </em></p>
-                    <br/>
+                    <br>
                     <p>
                     When the cluster is in its rigid, harmonic regime the theoretical heat capacity is 3$kT$. each degree of freedom of the particles contributes $1.2 kT$ to the heat capacity. In the harmonic regime each particle has 3 degrees of freedom due to the velocities in the $\hat{x}$, $\hat{y}$ and $\hat{z}$ directions. They have further degrees of freedome due to the interaction of the particles on each other, each particle is acted on by the other $N-1$ particles. In the $\hat{x}$, $\hat{y}$ and $\hat{z}$ directions there are $3(N-1)$ extra degrees of freedom, which contribute $1/2 kT$ to the heat capacity.
 
@@ -318,8 +313,8 @@
                     The flat part of the heat capacity plot is due to the latent heat of evaportation. Before the atoms evaporate into a gas the latent heat of evaportation energy barrier needs to be overcome. Further work could be to determine exactly the parameters which this energy barrier depends on.
                     </p>
                 </div>
-                    <br/>
-                    <br/>
+                    <br>
+                    <br>
                 <div class="row col-lg-6 col-lg-offset-3">
                     <h5 class="text-center" id="vibrational-spectrum">Vibrational spectrum</h5>
 
@@ -341,23 +336,23 @@
 
                     We only want to analyse the frequencies of the peaks of the vibrational density of states, thus we need only look at the real parts of the Fourier transform.
                     </p>
-                    <br/>
+                    <br>
                 </div>
 
 
                 <div class="row col-lg-8 col-lg-offset-2">
                     <div class="row col-lg-10 col-lg-offset-1">
-                        <img class=" pull-left" src="images/corrs.png">
-                        <img class=" pull-right" src="images/spec.png">
+                        <img class="pull-left" src="images/corrs.png">
+                        <img class="pull-right" src="images/spec.png">
                     </div>
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
-                    <br/>
+                    <br>
                     <p class="text-center"><em>
                     Fig 8. Velocity autocorrelation and vibrational spectrum for 3, 4 and 5 shells. The anharmonic case was taken with 5 shells.
                     </em></p>
-                    <br/>
+                    <br>
 
                     <p>
                         Figure 8 shows the numerically calculated VAF for 3, 4 and 5 shells with added energy of 0.00001. The anaharmonic case was taken with 5 shells and energy of 1.
@@ -474,7 +469,7 @@ for (i=0; i lt N; i++){
 }
 </pre></code>
 After adding energy and annealing the average kinetic energy was calculated by summing the kinetic energy of each atom and dividing by the number of atoms.
-</p><p>
+<p>
 The kinetic energy of a single atoms was calculated by summing the squares of the velocity components and dividing by two.
 </p>
                     <p>
@@ -520,11 +515,7 @@ The kinetic energy of a single atoms was calculated by summing the squares of th
         </div>
 
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/jquery.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
+        <script src="scripts/dbd26eaf.vendor.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -536,11 +527,8 @@ The kinetic energy of a single atoms was calculated by summing the squares of th
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
-        <!-- build:js scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
+        <script src="scripts/b6c3df09.main.js"></script>
 
-        <!-- build:js scripts/plugins.js -->
-        <!-- endbuild -->
+        <script src="scripts/d41d8cd9.plugins.js"></script>
 </body>
 </html>
