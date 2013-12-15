@@ -10,8 +10,12 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="styles/9a774be5.main.css"/>
-        <script src="scripts/vendor/d7100892.modernizr.js"></script>
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
         <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
@@ -48,7 +52,7 @@
                     <h4 class="text-center">Title</h4>
                     <p class="text-center"><em>Analysis of the dynamics of a noble gas cluster.</em></p>
                     <p>
-                    We have performed simulated annealing of a noble gas fcc atomic cluster with a monte-carlo molecular-dynamics approach. The atoms are confined by the Leonard-Jones potential and are annealed by adding energy and integrating the equations of motion. The heat capacity of the system is investigated by adding incremental energy to the system and allowing the atoms to gain a brownian velocity. Further systematics of the vibrational spectrum are investigated.
+                    We have performed simulated annealing of a noble gas fcc atomic cluster with a monte-carlo molecular-dynamics approach. The atoms are confined by the Lennard-Jones potential and are annealed by adding energy and integrating the equations of motion. The heat capacity of the system is investigated by adding incremental energy to the system and allowing the atoms to gain a brownian velocity. Further systematics of the vibrational spectrum are investigated.
                     </p>
                     <hr>
                 </div>
@@ -84,16 +88,14 @@
                         Molecular dynamics is a computational technique that investigates the behaviour of atoms
                         in the context of a numerical N-body simulation.
 
-                        Given a set of forces, the atoms are allowed to interact for a given time, the motion of the atoms
+                        Given a set of forces, the atoms are allowed to interact for a given time. The motion of the atoms
                         is determined by numerically solving the equations of motion of the system.
 
+                        </p><p>
                         Molecular dynamics simulations is especially useful in the field of materials science.
-
                         It is important to understand the properties of interacting atoms when designing various semiconductor devices, creating novel materials and understanding the various properties of existing materials.
 
                         Since the molecular systems have such vast numbers of interactive bodys, it is impossible to understand the properties of the system analytically. Molecular dynamics simulations hope to solve this issue.
-
-                        In this report we investigated the properties of a hypothetical face centred cubic lattice with 3, 4 and 5 shells.
                     </p>
                 </div>
 
@@ -107,6 +109,8 @@
                     <br>
 
                     <p>
+                    In this report we investigated the properties of a hypothetical face centred cubic lattice with 3, 4 and 5 shells.
+                    This is a hypothetical cluster, so all units are arbitrarily scaled. The distances and velocity are not given in physical units etc.
                     The atoms in the cluster were confined by the Lennard-Jones (LJ) potential.
 
                     $$V_{LJ} = 4\epsilon [(\frac{\sigma}{r})^{12} + (\frac{\sigma}{r})^{6}].$$
@@ -238,7 +242,7 @@
 
                     The system was then allowed to lose energy, by adding a damping factor of 0.5 while integrating. We see that as the velocity of each particle decreases
                     the interatomic forces start pulling the atoms closer together. The result is an energetic status of the system being similar to that of the fcc before
-                    heating. In this case the atoms did settle back into their initial equilibrium positions, this was a limiting factor of the limited computational power
+                    heating. In this case the atoms did not settle back into their initial equilibrium positions, this was a limiting factor of the limited computational power
                     used in this project.
                     </p>
                     <br>
@@ -289,7 +293,7 @@
                     </em></p>
                     <br>
                     <p>
-                    When the cluster is in its rigid, harmonic regime the theoretical heat capacity is 3$kT$. each degree of freedom of the particles contributes $1.2 kT$ to the heat capacity. In the harmonic regime each particle has 3 degrees of freedom due to the velocities in the $\hat{x}$, $\hat{y}$ and $\hat{z}$ directions. They have further degrees of freedome due to the interaction of the particles on each other, each particle is acted on by the other $N-1$ particles. In the $\hat{x}$, $\hat{y}$ and $\hat{z}$ directions there are $3(N-1)$ extra degrees of freedom, which contribute $1/2 kT$ to the heat capacity.
+                    When the cluster is in its rigid, harmonic regime the theoretical heat capacity is 3$kT$. each degree of freedom of the particles contributes $1/2 kT$ to the heat capacity. In the harmonic regime each particle has 3 degrees of freedom due to the velocities in the $\hat{x}$, $\hat{y}$ and $\hat{z}$ directions. They have further degrees of freedom due to the interaction of the particles on each other, each particle is acted on by the other $N-1$ particles. In the $\hat{x}$, $\hat{y}$ and $\hat{z}$ directions there are $3(N-1)$ extra degrees of freedom, which contribute $1/2 kT$ to the heat capacity.
 
                     The total heat capacity of the system in the low-energy, harmonic regime is then
                     $$C_{low} = (3(N-1) + 3N )/2 kT$$
@@ -553,7 +557,11 @@ for(iav=0; iav lt MaxTime ; iav++){
         </div>
 
 
-        <script src="scripts/dbd26eaf.vendor.js"></script>
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -565,8 +573,11 @@ for(iav=0; iav lt MaxTime ; iav++){
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
-        <script src="scripts/b6c3df09.main.js"></script>
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
 
-        <script src="scripts/d41d8cd9.plugins.js"></script>
+        <!-- build:js scripts/plugins.js -->
+        <!-- endbuild -->
 </body>
 </html>
