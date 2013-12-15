@@ -42,7 +42,7 @@
             <div class="row col-lg-12">
                 <h5 class="text-muted">PY4109 - Computational Physics</h5>
                 <h6 class="text-muted">Eoin Murray - 110367833</h6>
-                <h6 class="text-muted"><a href="https://github.com/eoinmurray/molec/tree/master">Code on Github.</a></h6>
+                <h6 class="text-muted"><a href="https://github.com/eoinmurray/molec/tree/code">Code on Github.</a></h6>
             </div>
 
             <div class="row col-lg-10 col-lg-offset-1">
@@ -314,6 +314,8 @@
 
                     The determined ratios for 3, 4 and 5 shells were 1.53, 2.06 and 1.89 respectively. The values could probably be made closer to 2 with longer integration time between energy increments, however the determined values are reasonable.
 
+                    </p><p>
+                    The flat part of the heat capacity plot is due to the latent heat of evaportation. Before the atoms evaporate into a gas the latent heat of evaportation energy barrier needs to be overcome. Further work could be to determine exactly the parameters which this energy barrier depends on.
                     </p>
                 </div>
                     <br/>
@@ -339,33 +341,168 @@
 
                     We only want to analyse the frequencies of the peaks of the vibrational density of states, thus we need only look at the real parts of the Fourier transform.
                     </p>
-
-
-
                     <br/>
                 </div>
 
 
                 <div class="row col-lg-8 col-lg-offset-2">
                     <div class="row col-lg-10 col-lg-offset-1">
-                        <img class="img-rounded pull-left" src="images/corrs.png">
-                        <img class="img-rounded pull-right" src="images/spec.png">
+                        <img class=" pull-left" src="images/corrs.png">
+                        <img class=" pull-right" src="images/spec.png">
                     </div>
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
+                    <br/>
+                    <p class="text-center"><em>
+                    Fig 8. Velocity autocorrelation and vibrational spectrum for 3, 4 and 5 shells. The anharmonic case was taken with 5 shells.
+                    </em></p>
+                    <br/>
+
+                    <p>
+                        Figure 8 shows the numerically calculated VAF for 3, 4 and 5 shells with added energy of 0.00001. The anaharmonic case was taken with 5 shells and energy of 1.
+
+                        The VAF for the 3 shell case, show very slight modulation, implying the harmonic mode is not very intense. The modulation grows in the 4 shell case and become very clear, with defined beats, in the 5 shell case.
+                    </p><p>
+                        The Fast Fourier transform of the VAF was taken to determine the vibrational spectrum.
+
+                        There is a clear frequency peak in th 3, 4 and 5 shell case. With a slight redshift as the number of shells grows. This could be due to the fact that the 5 shell case is a physically bigger cluster so the wavelength of the harmonic mode can be bigger.
+
+                        This result suggests that there is one harmonic mode of the cluster when it is very cold (has very little energy applied).
+
+                        There seems to be no be no prominent frequency mode when the cluster is in the nearer the evaportation regime, when the added energy was 1.
+                    </p>
                 </div>
-
-
 
                 <div class="row col-lg-6 col-lg-offset-3">
                     <h4 class="text-center" id="conclusion">Conclusion</h4>
+                    <p>
+                    In this report we discussed a monte carlo based simulation of the molecular dynamics of a face centred cubic cluster of atoms. The annealing process was studied and the binding energy after annealing determined.
+                    </p><p>
+                    The cluster was heated and it was shown that the cluster changes phase. It goes from a harmonic cluster of atoms to a noble gas, moving through a stage where the latent heat of evaporation energy barrier must be overcome.
+                    </p><p>
+                    The heat capacities of the harmonic and gas stage were measured and the ratio of the two was shown to match the theoretical value of 2.
+                    </p><p>
+                    The vibrational spectrum of the cluster was analysed by way of taking the Fourier transform of the velocity autocorrelation function. It was shown that there is one prominent harmonic mode when the cluster is very cold.
+                    </p><p>
+                    This work in the future could be applied to a real gas cluster of solid state system. The beauty of the numerical approach is that it is flexible to changes in the potential model.
+                    </p>
                 </div>
 
                 <div class="row col-lg-6 col-lg-offset-3">
+
+
                     <h4 class="text-center" id="methods">Methods</h4>
+
                     <h5 class="text-center" id="algorithms">Algorithms</h5>
+
+                    <h6 class="text-center"><em>Molecular annealing</em></h6>
+                    <p>
+                       The atoms were placed on a fragment of an fcc lattice such that the nearest neighbour distance is
+                        $$r_{nn} = (2\alpha/\beta)^{1/6},$$
+                        These interatomic distances minimize the Lennard-Jones potential.
+
+                       The atoms are placed in concentric "shells" about a central atom
+                       which is at (0,0,0).
+                       </p><p>
+                       The equations of motion of the system were integrated by using the leapfrog integration method.
+
+                        Before the integration was done forces on each particles at positions were calculated.
+
+                        The internal forces were calculated from the Lennard Jones potential. The
+                        The external forces on each particle from an external
+                            confining "box" potential were also calculated.
+
+                        $$V_{ext}(x,y,z) = V_0 [exp{(2x/L)^4} + exp{(2x/L)^4} + exp{(2x/L)^4} -3].$$
+
+                        In all cases in this report $V_0 = 0.01$ and $L = 20$.
+</p><p>
+                        The leapfrog integration was then used. Leapfrog integration is equivalent to updating positions $x(t)$ and velocities $v(t)=\dot x(t)$ at interleaved time points, staggered in such a way that they 'leapfrog' over each other. Assuming the mass of the particles is 1, so that the acceleration and forces become equal. The algorithm is presented here in pseudocode. For simplicity only one dimension $\hat{x}$ is dealt with here.
+<code><pre>
+# dt = time step
+# gamma = decay factor
+
+step = dt/2
+gs = gamma*step
+velfac = exp( -gs )
+if ( abs(gs2) < 1e-5)
+  forfac = step*(1 + gs*(1-gs/3)/2)
+else
+  forfac = (1-velfac)/gamma
+
+while(t < tmax){
+  for(i=0; i < Natoms; i++){
+    v[i] = velfac*v[i] + forfac * (forces_int[i] + forces_ext[i])
+    x[i] = x[i] + dt * v[i]
+  }
+
+  t = t + dt
+  forces_int, forces_ext = Forces(x, t)
+
+  for(i=0; i < N; i++){
+    v[i] = velfac*v[i] + forfac * (forces_int[i] + forces_ext[i])
+  }
+}
+</pre></code>
+                When this algorithm is finished the positions will have been updated.
+                This is the method used in the molecular annealing section of this report.
+
+                    </p>
+
+                    <h6 class="text-center"><em>Heat capacity</em></h6>
+
+                        To calculate the heat capacity of the system energy increments were added to the cluster. The system was integrated as above for a period after adding energy.
+
+                        To add energy to the cluster random increments were added to the velocities of N particles, such that the average energy per particle increases by dE.
+
+<code><pre>
+# random() returns a homogeneously distributed random number
+# on the interval [0, 1]
+
+kT = 4.0/3.0 * dE;
+for (i=0; i < N; i++){
+
+  r = sqrt(- kT * log( random() ));
+  t = pi2 * random();
+  vx[i] += r * sin(t);
+  vy[i] += r * cos(t);
+
+  r = sqrt(- kT * log( random() ));
+  t = pi2 * random();
+
+  vz[i] += r * sin(t);
+}
+</pre></code>
+After adding energy and annealing the average kinetic energy was calculated by summing the kinetic energy of each atom and dividing by the number of atoms.
+</p><p>
+The kinetic energy of a single atoms was calculated by summing the squares of the velocity components and dividing by two.
+</p>
+                    <p>
+
+                    </p>
+
+                    <h6 class="text-center"><em>Vibrational spectrum</em></h6>
+                    <p>
+
+                    </p>
+
+
                     <h5 class="text-center" id="implementation">Implementation</h5>
+
+                    <h6 class="text-center"><em>Molecular annealing</em></h6>
+                    <p>
+
+                    </p>
+
+                    <h6 class="text-center"><em>Heat capacity</em></h6>
+                    <p>
+
+                    </p>
+
+                    <h6 class="text-center"><em>Vibrational spectrum</em></h6>
+                    <p>
+
+                    </p>
 
                 </div>
                 </div>
@@ -373,8 +510,11 @@
 
         </div>
 
-            <div class="footer">
-                <p>Do you even laser?</p>
+        <div class="container">
+            <div class="row col-lg-12">
+                <h5 class="text-muted">PY4109 - Computational Physics</h5>
+                <h6 class="text-muted">Eoin Murray - 110367833</h6>
+                <h6 class="text-muted"><a href="https://github.com/eoinmurray/molec/tree/code">Code on Github.</a></h6>
             </div>
 
         </div>
